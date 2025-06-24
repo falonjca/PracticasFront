@@ -14,6 +14,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
+import { ProductosComponent } from './pages/producto/producto.component';
+import { CategoriaComponent } from './pages/categoria/categoria.component';
 
 export const routes: Routes = [
   {
@@ -133,6 +135,33 @@ export const routes: Routes = [
             IRoleType.user,
           ],
           name: 'Sport Team',
+          showInSidebar: true
+        }
+      },
+
+         {
+        path: 'productos',
+        component: ProductosComponent,
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'productos',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'categorias',
+        component: CategoriaComponent,
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'categorias',
           showInSidebar: true
         }
       },

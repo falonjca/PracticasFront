@@ -104,3 +104,19 @@ export interface IPlayer {
   id?: number;
   name?: string;
 }
+
+export interface IProducto {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  precio?: number;
+  cantidad?: number;
+
+}
+
+export interface ICategoria {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  productos?: IProducto[];
+}
