@@ -1,35 +1,49 @@
 <form [formGroup]="form" class="row mb-4">
   <div>
-    <h2 class="mb-0">Add Product</h2>
+    <h2 class="mb-0">Agregar Producto</h2>
   </div>
   <div class="mb-2 col-4">
-    <label class="mb-1" for="nombre">Nombre*</label>
+    <label class="mb-1" for="nombre">Nombre</label>
     <input id="nombre" formControlName="nombre" type="text" class="form-control">
     @if (form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
       <p class="text-danger my-1">Nombre is required</p>
     }
   </div>
   <div class="mb-2 col-4">
-    <label class="mb-1" for="descripcion">Descripcion*</label>
+    <label class="mb-1" for="descripcion">Descripción</label>
     <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
     @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
       <p class="text-danger my-1">Descripcion is required</p>
     }
   </div>
   <div class="mb-2 col-4">
-    <label class="mb-1" for="precio">Precio*</label>
+    <label class="mb-1" for="precio">Precio</label>
     <input id="precio" formControlName="precio" type="number" class="form-control">
     @if (form.controls['precio'].invalid && (form.controls['precio'].dirty || form.controls['precio'].touched)) {
       <p class="text-danger my-1">Precio is required</p>
     }
     </div>
     <div class="mb-2 col-4">
-      <label class="mb-1" for="cantidad">Cantidad*</label>
+      <label class="mb-1" for="cantidad">Cantidad</label>
       <input id="cantidad" formControlName="cantidad" type="number" class="form-control">
       @if (form.controls['cantidad'].invalid && (form.controls['cantidad'].dirty || form.controls['cantidad'].touched)) {
         <p class="text-danger my-1">Cantidad is required</p>
       }
     </div>
+
+     <div class="mb-2 col-4">
+        <label class="mb-1" for="categoria">Categoría</label>
+        <select id="categoria" formControlName="categoria" class="form-select">
+
+          @for (categoria of pCategoryList; track categoria.id) {
+            <option [ngValue]="categoria">{{ categoria.nombre }}</option>
+          }
+        </select>
+        @if (form.controls['categoria'].invalid && (form.controls['categoria'].dirty || form.controls['categoria'].touched)) {
+          <p class="text-danger my-1">Category is required</p>
+        }
+    </div>
+
 
   <div class="col-12">
     <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Save</button>

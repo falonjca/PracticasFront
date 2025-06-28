@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
-import { GamesFormComponent } from '../../game/games-form/games-form.component';
+import { CategoriaFormComponent } from '../../categoria/categorias-form/categorias-form.component';
 import { ModalComponent } from '../../modal/modal.component';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
@@ -13,7 +13,7 @@ import { ICategoria } from '../../../interfaces';
   imports: [
       CommonModule,
       ModalComponent,
-      GamesFormComponent,
+      CategoriaFormComponent,
       PickerComponent
 
   ],

@@ -5,6 +5,7 @@
       <h3>Descripcion: {{product.descripcion}}</h3>
       <p>Precio: {{product.precio}}</p>
       <p>Cantidad: {{product.cantidad}}</p>
+      <p>Categoría: {{product.categoria?.nombre}}</p>
       @if (areActionsAvailable) {
         <button (click)="callUpdateModalMethod.emit(product)" class="btn btn-success">Edit</button>
         <button  (click)="callDeleteMethod.emit(product)" class="btn btn-danger">Delete</button>
@@ -13,4 +14,5 @@
   } @empty {
     <p>No products available.</p>
   }
+
 </div>

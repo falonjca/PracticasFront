@@ -6,9 +6,10 @@ import { ModalComponent } from '../../components/modal/modal.component';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoListComponent } from '../../components/producto/productos-list/productos-list.component';
-import { IProducto } from '../../interfaces';
+import { ICategoria, IProducto } from '../../interfaces';
 import { ProductosService } from '../../services/producto.service';
 import { ProductoFormComponent } from '../../components/producto/productos-form/productos-form.component';
+import { CategoriaService } from '../../services/categoria.service';
 
 @Component({
   selector: 'app-producto',
@@ -24,14 +25,19 @@ import { ProductoFormComponent } from '../../components/producto/productos-form/
 export class ProductosComponent {
 
     public pProductList: IProducto[] = []
+    public pCategoryList: ICategoria[] = [];
+
     public productService: ProductosService = inject(ProductosService);
+    public categoryService: CategoriaService = inject(CategoriaService);
     public fb: FormBuilder = inject(FormBuilder);
+    
     public productForm = this.fb.group({
       id: [''],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       precio: ['', Validators.required],
-      cantidad: ['', Validators.required]
+      cantidad: ['', Validators.required],
+      categoria: ['']
     });
     public modalService: ModalService = inject(ModalService);
     @ViewChild('editProductModal') public editProductModal: any;
@@ -49,6 +55,7 @@ export class ProductosComponent {
   
     constructor() {
       this.productService.getAll();
+      this.categoryService.getAll();
     }
 
     saveProduct(item: IProducto) {
@@ -63,12 +70,10 @@ export class ProductosComponent {
   
 
     deleteProduct(item: IProducto) {
-      console.log("deleteProduct Boton llega objeto", item);
       this.productService.delete(item);
     }
   
     openEditProductModal(product: IProducto) {
-      console.log("openEditProductModal", product);
       this.productForm.patchValue({
         id: JSON.stringify(product.id),
         nombre: product.nombre,

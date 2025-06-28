@@ -3,9 +3,9 @@
 @if (areActionsAvailable) {
 <app-productos-form
     [form]="productForm"
+    [pCategoryList]="categoryService.categories$()"
     (callSaveMethod)="saveProduct($event)"
   />
-
 }
 
 
@@ -26,6 +26,7 @@
     <div>
       <app-productos-form
         [form]="productForm"
+        [pCategoryList]="categoryService.categories$()"
        (callUpdateMethod)="updateProduct($event)"
       />
     </div>
